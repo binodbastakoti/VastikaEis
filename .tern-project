@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+{"ide":{},"plugins":{"guess-types":{},"angular":{}},"libs":["ecma5","browser"]}
+=======
+{"ide":{},"plugins":{"guess-types":{},"angular":{}},"libs":["ecma5","browser","underscore","jquery"]}
+>>>>>>> 338fbb00f43a620e9fec5173074cd9fc4820d7bf

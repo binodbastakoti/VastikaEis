@@ -1,0 +1,18 @@
+<div class="modal-body">
+  <!-- navigation -->
+  <div class="lightbox-nav" style="margin-bottom: 32px;">
+    <!-- close button -->
+    <button class="close" aria-hidden="true" ng-click="$dismiss()">×</button>
+  </div>
+
+  <div class="lightbox-image-container">
+    <!-- caption -->
+    <div class="lightbox-image-caption">
+      <span>{{Lightbox.imageCaption}}</span>
+    </div>
+
+    <!-- image -->
+    <img ng-if="!Lightbox.isVideo(Lightbox.image)"
+        lightbox-src="{{Lightbox.imageUrl}}">
+  </div>
+</div>

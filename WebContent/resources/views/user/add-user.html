@@ -1,0 +1,132 @@
+<!-- BEGIN PAGE HEADER-->
+<h3 class="page-title">{{mode}} Marketer</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row profile-account">
+
+	<div class="col-md-9">
+		<div class="tab-content">
+			<div id="tab_1-1" class="tab-pane active">
+				<form class="form-horizontal" role="form" action="#"
+					name="addUserForm">
+					<h4>Information</h4>
+					<div class="form-group" show-errors>
+						<label class="control-label col-sm-2" for="firstname">First
+							Name:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="firstName"
+								ng-model="user.user.firstName" required maxlength="20"
+								minlength="2" pattern="[a-zA-Z]+" placeholder="First Name"">
+						</div>
+					</div>
+					<div class="form-group" show-errors>
+						<label class="control-label col-sm-2" for="middlename">Middle
+							Name:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="middleName"
+								ng-model="user.user.middleName" maxlength="20"
+								pattern="[a-zA-Z]+" placeholder="Middle Name">
+						</div>
+					</div>
+					<div class="form-group" show-errors>
+						<label class="control-label col-sm-2" for="lastname">Last
+							Name:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="lastName"
+								ng-model="user.user.lastName" required maxlength="20"
+								minlength="2" pattern="[a-zA-Z]+" placeholder="Last Name">
+						</div>
+					</div>
+					<div class="form-group" show-errors>
+						<label class="control-label col-sm-2" for="dob">DOB:</label>
+						<div class="col-sm-10">
+							<input type="text"
+								class="form-control form-control-inline input-medium date-picker"
+								name="dob" ng-model="user.user.dob" required date
+								placeholder="DOB">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="gender">Gender:</label>
+						<div class="col-sm-10">
+							<label class="radio-inline"><input type="radio"
+								name="gender" ng-model="user.user.gender" value="M" />Male</label> <label
+								class="radio-inline"><input type="radio" name="gender"
+								ng-model="user.user.gender" value="F" />Female</label>
+						</div>
+					</div>
+
+					<div class="form-group" show-errors>
+						<label class="control-label col-sm-2" for="email">Email:</label>
+						<div class="col-sm-10">
+							<input type="email" class="form-control" name="email"  user-id="{{userId}}"
+								ng-model="user.user.email" required email unique-email placeholder="Email" ng-model-options="{ updateOn: 'blur' }" >
+								<i class="fa fa-circle-o-notch fa-spin" ng-show="addUserForm.email.$pending.uniqueEmail"></i>
+								<div class="help-block" ng-show="addUserForm.email.$error.uniqueEmail">Email already registered!</div>
+								<div class="help-block" ng-show="addUserForm.email.$valid">Email available!</div>
+								
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="cellphone">Cell
+							Phone:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="contactNumber"
+								required number ng-model="user.contacts.contactNumber"
+								placeholder="Cell Phone">
+						</div>
+					</div>
+					<h4>Address & Location</h4>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="street">Street:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control"
+								ng-model="user.address.street" placeholder="Street">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="city">City:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control"
+								ng-model="user.address.city" placeholder="City">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="state">State:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control"
+								ng-model="user.address.state" placeholder="State">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="zip">Zip:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control"
+								ng-model="user.address.zipCode" placeholder="Zip">
+						</div>
+					</div>
+					<h4 ng-if-permission="Roles">Roles</h4>
+					<div class="form-group" ng-if-permission="Roles">
+						<label class="control-label col-sm-2"></label>
+						<div class="col-sm-10">
+							<select class="form-control" multiple ng-multiple="true"
+								ng-options="role.id as role.name for role in roles"
+								ng-model="user.roleIds"></select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2"></label>
+						<div class="col-sm-10">
+							<a ui-sref="app.users"><button type="button" class="btn btn-default" id="cancel">Cancel</button></a>
+							<button type="button" class="btn btn-success" ng-click="save()" ng-disabled="processing"><i class="fa fa-spinner fa-spin" ng-show="processing"></i>Save</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--end col-md-9-->
+</div>
+<!-- END PAGE CONTENT-->

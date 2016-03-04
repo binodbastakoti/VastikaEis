@@ -1,0 +1,48 @@
+<div ng-app="vastikaApp">
+
+	<!-- BEGIN PAGE HEADER-->
+
+        <h3 class="page-title">
+            Skill Categories
+        </h3>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                
+                        <p>
+                            <a class="btn btn-info" ng-click="open()" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span> Add Category</a>
+                        </p>
+                <div class="portlet">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-globe"></i>Skill Categories
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped table-bordered table-hover" id="tableWith2Columns">
+                            <thead>
+                                <tr>
+                                    <th>Nameee</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="gradeX" ng-repeat="skillCategory in categories">
+                                    <td>{{ skillCategory.categoryName }}</td>
+                                    <td>{{ skillCategory.categoryDesc }}</td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+	<!-- END PAGE CONTENT -->
+
+
+</div>

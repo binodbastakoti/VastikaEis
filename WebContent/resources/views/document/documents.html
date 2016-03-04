@@ -1,0 +1,107 @@
+<!-- BEGIN PAGE HEADER-->
+
+        <h3 class="page-title">
+            {{ user.firstName + ' ' + user.middleName + ' ' + user.lastName }}'s Documents
+        </h3>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                
+                <p>
+                    <a class="btn btn-info" ng-click="addResume()" data-toggle="modal">
+                    	<span class="glyphicon glyphicon-plus"></span> Add Resume
+                    </a>
+                </p>
+                
+                        
+                <div class="portlet">
+                    <div class="portlet-title"> 
+                        <div class="caption">
+                            <i class="fa fa-globe"></i>Resumes
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped table-bordered table-hover" id="tableWith2Columns">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Visibility</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="gradeX" ng-repeat="resume in resumes">
+                                    <td>
+                                    	<img ng-src="{{ baseUrl }}api/resumes/{{ resume.id }}/download" ng-if="resume.fileType=='img'" class="table-image" ng-click="showPreview( baseUrl + 'api/resumes/' +  resume.id + '/download')"/>
+                                    	<span class="icon-doc table-icon" ng-if="resume.fileType=='doc'"></span>
+                                    	 {{ resume.title }}
+                                    </td>
+                                    <td>{{ resume.email }}</td>
+                                    <td>{{ resume.resumeContact }}</td>
+                                    <td>{{ resume.visibility }}</td>
+                                    <td>
+                                        <a href="javascript:;" class="btn btn-info btn-xs" ng-click="editResume(resume)">Edit</a>
+                                        <a href="javascript:;" class="btn btn-danger btn-xs" ng-click="deleteResume(resume)">Delete</a>
+                                        <a href="{{ baseUrl }}api/resumes/{{ resume.id }}/download" class="btn btn-primary btn-xs" target="_blank">Download</a>
+                                    </td>
+                                </tr>
+                                <tr ng-if="!resumes.length"><td colspan="5">No records found.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                
+                <p>
+                    <a class="btn btn-info" ng-click="addDocument()" data-toggle="modal">
+                    	<span class="glyphicon glyphicon-plus"></span> Add Document
+                    </a>
+                </p>
+                
+                <div class="portlet">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-globe"></i>Documents
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped table-bordered table-hover" id="tableWith2Columns">
+                            <thead>
+                                <tr>
+                                    <th>DocumentType</th>
+                                    <th>Note</th>
+                                    <th>Expiry Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="gradeX" ng-repeat="document in documents">
+                                    <td>
+                                    	<img ng-src="{{ baseUrl }}api/documents/{{ document.id }}/download" class="table-image" ng-if="document.fileType=='img'" ng-click="showPreview( baseUrl + 'api/documents/' +  document.id + '/download')"/>
+                                    	<span class="icon-doc table-icon" ng-if="resume.fileType=='doc'"></span>
+                                    	 {{ document.documentType }}
+                                    </td>
+                                    <td>{{ document.description }}</td>
+                                    <td>{{ document.expiryDate | date:"MM/dd/yyyy"}}</td>
+                                    <td>
+                                        <a href="javascript:;" class="btn btn-info btn-xs" ng-click="editDocument(document)">Edit</a>
+                                        <a href="javascript:;" class="btn btn-danger btn-xs" ng-click="deleteDocument(document)">Delete</a>
+                                        <a href="{{ baseUrl }}api/documents/{{ document.id }}/download" class="btn btn-primary btn-xs" target="_blank">Download</a>
+                                    </td>
+                                </tr>
+                                <tr ng-if="!documents.length"><td colspan="4">No records found.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+	<!-- END PAGE CONTENT -->
+

@@ -1,0 +1,69 @@
+
+<!-- BEGIN PAGE HEADER-->
+<h3 class="page-title">Marketing</h3>
+
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN EXAMPLE TABLE PORTLET-->
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-globe"></i>Assign Marketer
+				</div>
+			</div>
+			<div class="portlet-body">
+
+				<div class="row">
+					<div class="dropdown col-md-4" style="margin: 5px 0px 20px">
+						<select id="select-hero" class="form-control" ng-change="show(selectedHeroId)"
+							ng-model="selectedHeroId"
+							ng-options="hero.id as hero.fullName for hero in heroes">
+							<option value="" ng-if="false"></option>
+						</select>
+					</div>
+				</div>
+				<div id="products" class="row list-group" ng-if="selectedHeroId">
+					<div class="item  col-xs-6 col-lg-6">
+						<div class="portlet">
+							<div class="portlet-title">
+								<div class="caption">Marketer</div>
+							</div>
+							<div class="portlet-body">
+								<div class="row" style="margin: 2px" ng-repeat="notAssignedRecuiter in notAssignedRecuiters">
+									<div class="col-md-8">{{notAssignedRecuiter.name}}</div>
+									<div class="col-md-4">
+										<a class="btn btn-info" ng-click="assign(notAssignedRecuiter)"><span
+											class="glyphicon glyphicon-plus"></span> Assign</a>
+									</div>
+								</div>
+								<div ng-if="!notAssignedRecuiters.length">No Marketer Available.</div>
+							</div>
+						</div>
+					</div>
+					<div class="item  col-xs-6 col-lg-6">
+						<div class="portlet">
+							<div class="portlet-title">
+								<div class="caption">Assigned Marketer</div>
+							</div>
+							<div class="portlet-body">
+								<div class="row" style="margin: 2px" ng-repeat="assignedRecruiter in assignedRecruiters">
+									<div class="col-md-8">{{assignedRecruiter.name}}</div>
+									<div class="col-md-4">
+										<a class="btn btn-info" href="javascript:;"
+											ng-click="unAssign(assignedRecruiter)"><span
+											class="glyphicon glyphicon-minus"></span> Remove</a>
+									</div>
+								</div>
+								<div ng-if="!assignedRecruiters.length">Not assigned to any marketer.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- END EXAMPLE TABLE PORTLET-->
+</div>

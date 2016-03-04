@@ -1,0 +1,155 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal"
+		ng-click="cancel()" aria-hidden="true"></button>
+	<h4 class="modal-title">Hero Details</h4>
+</div>
+<div class="modal-body">
+	<tabset justified="true"> <tab heading="Information">
+	<div class="details">
+		<div class="row">
+			<label class="col-sm-4 text-right"> Name</label>
+			<div class="col-sm-8">{{user.firstName + ' ' + user.middleName
+				+ ' ' + user.lastName}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">DOB</label>
+			<div class="col-sm-8">{{user.dob}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Gender</label>
+			<div class="col-sm-8">{{user.gender=='M' ? 'Male' : 'Female'}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Email</label>
+			<div class="col-sm-8">{{user.email}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Cell Phone</label>
+			<div class="col-sm-8">{{user.contactNumber}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Availability</label>
+			<div class="col-sm-8">{{user.availability}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Status</label>
+			<div class="col-sm-8">{{user.status}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Visa</label>
+			<div class="col-sm-8">{{user.visaStatus}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Prime OK?</label>
+			<div class="col-sm-8 checkbox-list">
+				{{user.primeOK=='Y'?'Yes':'No'}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Address</label>
+			<div class="col-sm-8">
+				{{user.street}}<br /> {{user.city}}, {{user.state}},
+				{{user.zipCode}}
+			</div>
+		</div>
+	</div>
+
+	</tab> <tab heading="Skills">
+	<div class="details">
+		<div class="row">
+			<label class="col-sm-4 text-right">Category</label>
+			<div class="col-sm-8">{{user.skillCategoryName}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Title</label>
+			<div class="col-sm-8">{{user.title}}</div>
+		</div>
+		<div class="row">
+			<label class="col-sm-4 text-right">Skills</label>
+			<div class="col-sm-8">
+				<div>
+					<div ng-repeat="skill in user.skills" class="row">
+						<div class="col-sm-6 text-right">{{skill.skillName}}</div>
+						<div class="col-sm-6">{{skill.yearsOfExperience}} Years</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</tab> <tab heading="Resumes">
+	<table class="table table-striped table-bordered table-hover"
+		id="tableWith2Columns">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Email</th>
+				<th>Contact</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="gradeX" ng-repeat="resume in resumes">
+				<td>{{ resume.title }}</td>
+				<td>{{ resume.email }}</td>
+				<td>{{ resume.resumeContact }}</td>
+				<td><a href="{{ baseUrl }}api/resumes/{{ resume.id }}/download"
+					class="btn btn-primary btn-xs" target="_blank">Download</a></td>
+			</tr>
+			<tr ng-if="!resumes.length">
+				<td colspan="5">No records found.</td>
+			</tr>
+		</tbody>
+	</table>
+	</tab> <tab heading="Documents">
+	<table class="table table-striped table-bordered table-hover"
+		id="tableWith2Columns">
+		<thead>
+			<tr>
+				<th>DocumentType</th>
+				<th>Note</th>
+				<th>Expiry Date</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="gradeX" ng-repeat="document in documents">
+				<td>{{ document.documentType }}</td>
+				<td>{{ document.description }}</td>
+				<td>{{ document.expiryDate | date:"MM/dd/yyyy"}}</td>
+				<td>
+					<a href="{{ baseUrl }}api/documents/{{ document.id }}/download"
+					class="btn btn-primary btn-xs" target="_blank">Download</a></td>
+			</tr>
+			<tr ng-if="!documents.length">
+				<td colspan="4">No records found.</td>
+			</tr>
+		</tbody>
+	</table>
+	</tab> <tab heading="Marketing">
+<!-- 	<table class="table table-striped table-bordered table-hover"
+		id="tableWith2Columns">
+		<thead>
+			<tr>
+				<th>DocumentType</th>
+				<th>Note</th>
+				<th>Expiry Date</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="gradeX" ng-repeat="document in documents">
+				<td>{{ document.documentType }}</td>
+				<td>{{ document.description }}</td>
+				<td>{{ document.expiryDate | date:"MM/dd/yyyy"}}</td>
+				<td>
+					<a href="{{ baseUrl }}api/documents/{{ document.id }}/download"
+					class="btn btn-primary btn-xs" target="_blank">Download</a></td>
+			</tr>
+			<tr ng-if="!documents.length">
+				<td colspan="4">No records found.</td>
+			</tr>
+		</tbody>
+	</table> -->
+	<p> TBD: complete marketing information will be here</p>
+	</tab>
+	</tabset>
+</div>

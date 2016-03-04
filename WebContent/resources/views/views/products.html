@@ -1,0 +1,19 @@
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<div controller="ProductCtrl">
+	<div style="float: right">
+		<a href="#/addProduct" class="btn-primary">Add New Product</a>
+	</div>
+	<br />
+	<h2 class="title text-center">All Products</h2>
+	<ul class="rig columns-3">
+		<li ng-repeat="product in products"><a href="#"><img src=""
+				alt="image will be loaded" /> </a>
+			<h4>{{product.price | currency}}</h4>
+			<p>{{product.name}}</p>
+			<p>
+				<button type="button" class="btn-primary-dashboard"
+					onclick="removeProduct(${item.id})">Remove Product</button>
+			</p></li>
+	</ul>
+</div>

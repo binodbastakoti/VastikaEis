@@ -1,0 +1,62 @@
+<!-- BEGIN PAGE HEADER-->
+
+<h3 class="page-title">{{ user.firstName + ' ' + user.middleName +
+	' ' + user.lastName }}'s Address</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+		<p>
+			<a class="btn btn-info" ng-click="addAddress()" data-toggle="modal">
+				<span class="glyphicon glyphicon-plus"></span> Add Address
+			</a>
+		</p>
+
+
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-globe"></i>Addresses
+				</div>
+			</div>
+			<div class="portlet-body">
+				<table class="table table-striped table-bordered table-hover"
+					id="tableWith2Columns">
+					<thead>
+						<tr>
+							<th>Street</th>
+							<th>City</th>
+							<th>State</th>
+							<th>StartDate</th>
+							<th>EndDate</th>
+							<th>Company</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="gradeX" ng-repeat="address in addresses">
+							<td>{{ address.street }}</td>
+							<td>{{ address.city }}</td>
+							<td>{{ address.state }}</td>
+							<td>{{ address.startDate }}</td>
+							<td>{{ address.endDate }}</td>
+							<td>{{ address.zipCode }}</td>
+							<td><a href="javascript:;" class="btn btn-info btn-xs"
+								ng-click="editAddress(address)">Edit</a> <a href="javascript:;"
+								class="btn btn-danger btn-xs" ng-click="deleteAddress(address)">Delete</a>
+						</tr>
+						<tr ng-if="!addresses.length">
+							<td colspan="5">No records found.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- END EXAMPLE TABLE PORTLET-->
+	</div>
+</div>
+<!-- END PAGE CONTENT -->
+

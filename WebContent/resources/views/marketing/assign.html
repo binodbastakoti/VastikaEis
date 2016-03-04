@@ -1,0 +1,26 @@
+<!--BEGIN MODAL CONTENT-->
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()"
+		aria-hidden="true"></button>
+	<h4 class="modal-title">Assign to {{marketer.name}} with resume(s)</h4>
+</div>
+<div class="modal-body">
+	<form name="assignForm">
+	<div class="row form-group" show-errors>
+		<div class="col-md-12">
+			<select class="form-control" multiple="" required
+				ng-options="resume.id as resume.title for resume in resumes"
+				ng-model="assign.resumeIds">
+			</select>
+		</div>
+	</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal"
+		ng-click="cancel()">Close</button>
+	<button type="button" class="btn btn-info" ng-click="assignMarketer()">Assign</button>
+</div>
+<!-- /.modal-content -->
+
+<!--BEGIN MODAL CONTENT-->

@@ -1,0 +1,78 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal"
+		ng-click="cancel()" aria-hidden="true"></button>
+	<h4 class="modal-title">{{ mode }} Resume</h4>
+</div>
+<div class="modal-body">
+	<form class="form-horizontal" role="form" action="#" novalidate
+		name="addResumeForm">
+
+		<div class="form-group" show-errors>
+			<label class="control-label col-sm-3" for="firstname">Title:<span
+				class="required"> * </span>
+			</label>
+			<div class="col-sm-9">
+				<input type="text" ng-model="resume.title" class="form-control for-validate"
+					required id="resume-title" name="title" placeholder="Title">
+			</div>
+		</div>
+		<div class="form-group" show-errors>
+			<label class="control-label col-sm-3" for="firstname">Email:<span
+				class="required"> * </span>
+			</label>
+			<div class="col-sm-9">
+				<input type="text" ng-model="resume.email" class="form-control for-validate"
+					required email name="email" email placeholder="Email">
+			</div>
+		</div>
+		<div class="form-group" show-errors>
+			<label class="control-label col-sm-3" for="firstname">Contact:<span
+				class="required"> * </span>
+			</label>
+			<div class="col-sm-9">
+				<input type="text" ng-model="resume.resumeContact"
+					class="form-control for-validate" required phone name="resumeContact"
+					placeholder="Contact">
+			</div>
+		</div>
+		<div class="form-group" show-errors ng-show="mode=='Add'">
+			<label class="control-label col-sm-3" for="firstname">File:<span
+				class="required"> * </span>
+			</label>
+			<div class="col-sm-9" ng-show="uploadStatus == 'NoFileUploaded'">
+				<div ng-model="file" ngf-drop class="drop-box" 
+					accept=".pdf,.doc,.docx"
+					ngf-drag-over-class="dragover" ngf-select>Select File Or Drop
+					File</div>
+			</div>
+			<div class="col-sm-9" ng-show="uploadStatus == 'Uploading'">
+				<progressbar value="uploadProgress" type="success"><b>{{uploadProgress}}%</b></progressbar>
+			</div>
+			<div class="col-sm-9" ng-show="uploadStatus == 'Uploaded'">
+				<p>{{ uploadedFile.name }} <a href="javascript:;" class="btn btn-danger btn-xs" ng-click="deleteFile(uploadedFile.id)">Remove</a></p>
+			</div>
+			<div>
+				<input type="hidden" class="form-control for-validate" name="fileId" ng-model="resume.fileUpload.id" required ng-if="mode=='Add'"/>
+			</div>
+		</div>
+		<div class="form-group" show-errors>
+			<label class="control-label col-sm-3" for="firstname">Visibility:<span
+				class="required"> * </span>
+			</label>
+			<div class="col-sm-9">
+				<label class="radio-inline">
+					<input type="radio" class="for-validate" value="yes" name="visibility" ng-model="resume.visibility" required /> Yes
+				</label>
+				<label class="radio-inline">
+					<input type="radio" class="for-validate" value="no" name="visibility" ng-model="resume.visibility" required /> No 
+				</label>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-success" ng-click="add()">{{
+		mode }}</button>
+	<button type="button" class="btn btn-default" data-dismiss="modal"
+		ng-click="cancel()">Close</button>
+</div>

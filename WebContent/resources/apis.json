@@ -1,0 +1,131 @@
+{
+	"baseUrl": "http://localhost:8080/springJWT/",
+	"apis": [
+		{
+			"api": "authenticate",
+			"method":"POST",	
+			"parameters": {
+				"username": "admin",
+				"password": "admin"
+			}
+		},
+		{
+			"api": "u/users",
+			"method":"GET",	
+			"parameters": {
+			}
+		},
+		{
+			"api": "fileUpload",
+			"method":"POST",			
+			"parameters": {
+			 	"file":""
+			},
+		},
+		{
+			"api": "addResume",
+			"method":"POST",			
+			"parameters": {
+			 	"title": ""
+			 	"email": ""
+			 	"fileUploadId": ""
+			 	"userId": ""
+			 	"resumeContact": ""
+			 	"visibility": ""
+			}
+		},
+		//Contact
+		{
+			"api": "users/{id}/contacts",
+			"method":"GET",
+			"parameters":{
+			}
+		},
+		{
+			"api": "users/{id}/latest",
+			"method":"GET",
+			"parameters":{
+			}
+		},
+		{
+			"api": "contacts",
+			"method":"GET"
+			"parameters":{
+			}
+		},
+		
+		//Skill
+		{
+			"api": "skills",
+			"method":"GET",
+			"parameters":{
+			}
+		},
+		{
+			"api": "skills",
+			"method":"POST",
+			"parameters":{
+				"skillName":".MYSQL"
+				"skillCategoryId":"2"
+			}
+		},
+		{
+			"api": "skills/{id}",
+			"method":"GET",
+			"parameters":{
+			}
+		},
+		{//Fixing bug
+			"api": "skills/{id}",
+			"method":"PUT",
+			"parameters":{
+				"skillName":"mysql"
+				"skillCategoryId":"2"
+			}
+		},
+		
+		//SkillCategory
+		{
+			"api": "skillCategories",
+			"method":"POST",
+			"parameters":{
+				"categoryDesc":"Business Analysit"
+				"categoryName":"BA"
+			}
+		},
+		{
+			"api": "skillCategories",
+			"method":"GET",
+			"parameters":{
+			}
+		},
+		{
+			"api": "skillCategories/{id}",
+			"method":"GET",
+			"parameters":{"
+			}
+		},
+		{
+			"api": "skillCategories/{id}",
+			"method":"PUT",
+			"parameters":{
+				"categoryDesc":"Business Analyst"
+				"categoryName":"BA"
+			}
+		},
+		{
+			"api": "skillCategories/{id}/skills",
+			"method":"GET",
+			"parameters":{
+			}
+		},
+		
+		//Address
+		{
+			"api": "users/{id}/address",
+			"method":"GET"
+			"parameters":{
+			}
+		}
+	]
+}

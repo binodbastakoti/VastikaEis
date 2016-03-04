@@ -1,0 +1,161 @@
+<!-- BEGIN SIDEBAR -->
+<div class="page-sidebar-wrapper">
+	<div class="page-sidebar navbar-collapse collapse">
+		<!-- BEGIN SIDEBAR MENU -->
+		<ul class="page-sidebar-menu">
+			<li class="sidebar-toggler-wrapper">
+				<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+				<div class="sidebar-toggler" ng-click="toggleSideBar()"></div>
+				<div class="clearfix"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+			</li>
+
+			<li class="start "><a ui-sref="."> <i class="icon-home"></i>
+					<span class="title">Dashboard</span>
+			</a></li>
+
+			<li ng-if-permission="Assign Marketer"
+				ng-class="{active:['app.users', 'app.add-user'].indexOf(uiRouterState.current.name) > -1}">
+				<a href="javascript:;"><i class="icon-user"></i><span
+					class="title">Marketer</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li ng-class="{ active: uiRouterState.current.name == 'app.users'}"
+						ng-if-permission="Roles"><a ui-sref=".users">View
+							Marketers</a></li>
+					<li
+						ng-class="{ active: uiRouterState.current.name == 'app.add-user'}"
+						ng-if-permission="Roles"><a ui-sref=".add-user">Add
+							Marketer</a></li>
+					<li
+						ng-class="{ active: uiRouterState.current.name == 'app.assignMarketer'}"
+						ng-if-permission="Assign Marketer"><a
+						ui-sref=".assignMarketer">Assign Marketer</a></li>
+				</ul>
+			</li>
+
+			<li ng-if-permission="My Hero"
+				ng-class="{active:['app.heroes', 'app.add-hero'].indexOf(uiRouterState.current.name) > -1}">
+				<a href="javascript:;"><i class="icon-user"></i><span
+					class="title">Consultant</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li
+						ng-class="{ active: uiRouterState.current.name == 'app.heroes'}"
+						ng-if-permission="Roles"><a ui-sref=".heroes">View
+							Consultants</a></li>
+					<li
+						ng-class="{ active: uiRouterState.current.name == 'app.my-heroes'}"
+						ng-if-permission="My Hero"><a ui-sref=".my-heroes">My
+							Consultants</a></li>
+					<li
+						ng-class="{ active: uiRouterState.current.name == 'app.add-hero'}"
+						ng-if-permission="My Hero"><a ui-sref=".add-hero">Add
+							Consultant</a></li>
+				</ul>
+			</li>
+
+
+			<!-- <li ng-if-permission="Roles | My Hero"
+				ng-class="{active: ['app.users', 'app.add-user', 'app.heroes', 'app.add-hero'].indexOf(uiRouterState.current.name) > -1}">
+				<a href="javascript:;"><i class="icon-user"></i><span
+					class="title">Employees</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li ng-class="{ active: uiRouterState.current.name == 'app.users'}"
+						ng-if-permission="Roles"><a ui-sref=".users">Marketers</a></li>
+					<li
+						ng-class="{ active: uiRouterState.current.name == 'app.add-user'}"
+						ng-if-permission="Roles"><a ui-sref=".add-user">Add
+							Marketer</a></li>
+					<li
+						ng-class="{ active: uiRouterState.current.name == 'app.heroes'}"
+						ng-if-permission="Roles"><a ui-sref=".heroes">Consultants</a></li>
+					<li
+						ng-class="{ active: uiRouterState.current.name == 'app.my-heroes'}"
+						ng-if-permission="My Hero"><a ui-sref=".my-heroes">My
+							Consultants</a></li>
+					<li
+						ng-class="{ active: uiRouterState.current.name == 'app.add-hero'}"
+						ng-if-permission="My Hero"><a ui-sref=".add-hero">Add
+							Consultant</a></li>
+				</ul>
+			</li>
+			<li ng-if-permission="Marketing"><a href="javascript:;"><i
+					class="icon-book-open"></i><span class="title">Marketing</span><span
+					class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li ng-if-permission="Assign Marketer"><a
+						ui-sref=".assignMarketer">Assign Marketer</a></li>
+				</ul></li>-->
+			<!-- <li><a href="javascript:;"><i class="icon-book-open"></i><span
+					class="title">Resume</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li><a ui-sref=".add-resume">Add Resume</a></li>
+					<li><a ui-sref=".resumes">Resumes</a></li>
+					<li><a ui-sref=".set-resume-marketers">Set Resume Marketer</a></li>
+
+				</ul></li>
+			<li><a href="javascript:;"><i class="icon-book-open"></i><span
+					class="title">Resume in Market</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li><a ui-sref=".addResumeInMarket">Add Resume in Market</a></li>
+					<li><a ui-sref=".resumeInMarket">Resume in Market</a></li>
+
+				</ul></li>
+			<li><a href="javascript:;"><i class="icon-book-open"></i><span
+					class="title">Follow Up</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li><a ui-sref=".setFollowUp">Set Follow Up</a></li>
+					<li><a ui-sref=".followUpList">Follow Up List</a></li>
+				</ul></li>
+			<li><a href="javascript:;"><i class="icon-book-open"></i><span
+					class="title">Address History</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li><a ui-sref=".addNewAddress">Add New Address</a></li>
+					<li><a ui-sref=".addressList">Address List</a></li>
+				</ul></li>
+			<li><a href="javascript:;"><i class="icon-book-open"></i><span
+					class="title">Contact History</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li><a ui-sref=".addNewContact">Add New Contact</a></li>
+					<li><a ui-sref=".contactList">Contact List</a></li>
+				</ul></li>
+			<li><a href="javascript:;"><i class="icon-book-open"></i><span
+					class="title">Employment History</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li><a ui-sref=".addNewEmployee">Add New Employee</a></li>
+					<li><a ui-sref=".employeeList">Employee List</a></li>
+				</ul></li>
+			<li><a href="javascript:;"><i class="icon-book-open"></i><span
+					class="title">Permission</span><span class="arrow "></span></a>
+				<ul class="sub-menu">
+					<li><a ui-sref=".setDefaultPermission">Set Default
+							Permissions</a></li>
+					<li><a ui-sref=".setUserPermission">Set User Permissions</a></li>
+				</ul></li> -->
+			<li ng-if-permission="Skill Category"><a
+				ui-sref=".skills-category" scroll-on-click> <i
+					class="icon-book-open"></i><span class="title">Skill
+						Categories</span>
+			</a></li>
+			<li ng-if-permission="Roles"><a ui-sref=".document-type"
+				scroll-on-click> <i class="icon-book-open"></i><span
+					class="title">Document Type</span>
+			</a></li>
+			<li ng-if-permission="Roles"><a ui-sref=".roles" scroll-on-click>
+					<i class="icon-book-open"></i><span class="title">Roles</span>
+			</a></li>
+			
+			
+			<!-- addded by basta -->
+			<li ng-if-permission="Roles"><a ui-sref="categories" scroll-on-click>
+					<i class="icon-book-open"></i><span class="title">Categories Added</span>
+			</a></li>
+			<!-- end of added div -->
+			
+			<!-- 
+			<li class="last "><a href="login.html"> <i
+					class="icon-settings"></i> <span class="title">Settings</span>
+			</a></li> -->
+		</ul>
+		<!-- END SIDEBAR MENU -->
+	</div>
+</div>
+<!-- END SIDEBAR -->

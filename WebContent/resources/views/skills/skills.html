@@ -1,0 +1,44 @@
+<!-- BEGIN PAGE HEADER-->
+<h3 class="page-title">{{ skillCategory.categoryName }}</h3>
+<h5>{{ skillCategory.categoryDesc }}</h5>
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+		<p>
+			<a class="btn btn-info" ng-click="open()" data-toggle="modal"><span
+				class="glyphicon glyphicon-plus"></span> Add Skill</a>
+		</p>
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-globe"></i>Skills
+				</div>
+			</div>
+			<div class="portlet-body">
+				<table class="table table-striped table-bordered table-hover"
+					id="tableWith2Columns">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="gradeX" ng-repeat="skill in skills">
+							<td>{{ skill.skillName }}</td>
+							<td><a href="javascript:;" class="btn btn-info btn-xs"
+								ng-click="edit(skill)">Edit</a> <a href="javascript:;"
+								class="btn btn-danger btn-xs" ng-click="delete(skill)">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- END EXAMPLE TABLE PORTLET-->
+	</div>
+</div>
+<!-- END PAGE CONTENT -->

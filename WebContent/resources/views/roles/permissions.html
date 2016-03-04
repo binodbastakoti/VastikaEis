@@ -1,0 +1,43 @@
+<!-- BEGIN PAGE HEADER-->
+<h3 class="page-title">{{ role.name }}</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-globe"></i>Permissions
+				</div>
+			</div>
+			<div class="portlet-body">
+
+				<div class="details" style="padding: 10px;">
+
+					<div class="row" ng-repeat="(module, perms) in permissions">
+						<h4>{{module}}</h4>
+						<div class="col-sm-offset-1">
+							<ul class="list-unstyled">
+								<li ng-repeat="perm in perms"><label> <input ng-model="roleIds[perm.id]"
+										type="checkbox"  checked/> {{perm.name}}
+								</label></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<button type="button" class="btn btn-success col-sm-offset-1"
+							ng-click="save()" ng-disabled="processing">
+							<i class="fa fa-spinner fa-spin" ng-show="processing"></i> Save
+						</button>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<!-- END EXAMPLE TABLE PORTLET-->
+	</div>
+</div>
+<!-- END PAGE CONTENT -->

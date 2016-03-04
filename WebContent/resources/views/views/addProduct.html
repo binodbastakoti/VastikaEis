@@ -1,0 +1,36 @@
+<div controller="AddProductCtrl">
+<form method="POST" enctype="multipart/form-data" ng-submit="addProduct()">
+		<table border="0">
+			<tr>
+				<td><label>Name</label></td>
+				<td><input name="name" value="" ng-model="product.name" /></td>
+			</tr>
+			<tr>
+				<td><label>Product Code</label></td>
+				<td><input name="productCode" ng-model="product.productcode" /></td>
+			</tr>
+			<tr>
+				<td><label>Category</label></td>
+				<td><textarea name="description" ng-model="product.description" rows="4" cols="22"/></td>
+			</tr>
+			<tr>
+				<td><label>Category</label></td>
+				<td>
+					<!-- <select name="id">
+						<form:options items="${categories}" itemLabel="name" itemValue="id"/>
+					</select>  -->
+				</td>
+			</tr>
+			 <tr>
+				<td><label>Price</label></td>
+				<td><input name="price" ng-model="product.price" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" name="submit" class="btn-primary"
+					value="Add"></td>
+			</tr>
+			<tr>
+		</table>
+	</form>
+	
+	</div>

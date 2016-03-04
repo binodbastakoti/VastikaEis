@@ -1,0 +1,101 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- needed for security tag lib expression support -->
+	<!-- <beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" 
+		/ -->
+
+
+	<global-method-security pre-post-annotations="enabled"
+		proxy-target-class="true" />
+
+	<http pattern="/" security="none" />
+	<http pattern="/resources/**" security="none" />
+	<http auto-config="true" use-expressions="true">
+
+		<access-denied-handler error-page="/403" />
+		<!-- <intercept-url pattern="/api/**" access="admin" /> <intercept-url 
+			pattern="/u*" access="admin" /> -->
+
+		<intercept-url pattern="/u*"
+			access="hasAnyRole('Users','Heroes')" />
+			
+		<!-- for users api -->
+		<intercept-url pattern="/api/users" access="hasRole('View Users')"
+			method="GET" />
+		<intercept-url pattern="/api/users" access="hasRole('Add User')"
+			method="POST" />
+		<intercept-url pattern="/api/users" access="hasRole('Edit User')"
+			method="PUT" />
+		<intercept-url pattern="/api/users" access="hasRole('Delete User')"
+			method="DELETE" />
+		
+		<!-- for heroes api -->
+		<intercept-url pattern="/api/myHeroes" access="hasRole('My Hero')" method="GET"/>
+		<intercept-url pattern="/api/heroes" access="hasRole('My Hero')" method="GET"/>
+		<intercept-url pattern="/api/heroes/{id}" access="hasRole('Delete Hero')"
+			method="DELETE" />
+		<intercept-url pattern="/api/heroes/{id}" access="hasRole('Edit Hero')"
+			method="PUT" />
+		<intercept-url pattern="/api/heroes" access="hasRole('Add Hero')"
+			method="POST" />
+
+		<!-- assign marketer -->
+		<intercept-url pattern="/api/marketer/{heroId}" access="hasRole('Get Marketer')"
+			method="GET" />
+		<intercept-url pattern="/api/assignHero/{heroId}"
+			access="hasRole('Assign Marketer')" method="POST" />
+		<intercept-url pattern="/api/marketer/removeHero/{heroId}/{recruiterId}"
+			access="hasRole('Delete Marketer')" method="DELETE" />
+
+		<!-- for skill Category api -->
+		<intercept-url pattern="/api/skillCategories" access="hasRole('Get Skill Category')" method="GET"/>
+		<intercept-url pattern="/api/skillCategories" access="hasRole('Add Skill Category')"
+			method="POST" />
+		<intercept-url pattern="/api/skillCategories/{id}"
+			access="hasRole('Edit Skill Category')" method="PUT" />
+		<intercept-url pattern="/api/skillCategories/{id}"
+			access="hasRole('Delete Skill Category')" method="DELETE" />
+			
+		<!-- for roles api -->	
+		<intercept-url pattern="/api/roles" access="hasRole('Add Role')" method="POST"/>
+		<intercept-url pattern="/api/roles" access="hasRole('View Role')" method="GET"/>
+		<intercept-url pattern="/api/roles/{id}" access="hasRole('View Role')" method="GET"/>
+		<intercept-url pattern="/api/roles/{id}" access="hasRole('Edit Role')" method="PUT"/>
+		<intercept-url pattern="/api/roles/{id}" access="hasRole('Delete Role')" method="DELETE"/>
+		<intercept-url pattern="/api/permissions" access="hasRole('Assign Permission')" method="GET"/>
+		<intercept-url pattern="/api/roles/{roleId}/permission" access="hasRole('Assign Permission')" method="PUT"/>
+
+		<form-login login-page="/" default-target-url="/u"
+			authentication-failure-url="/loginFailed" />
+		<logout invalidate-session="true" logout-success-url="/logout"
+			delete-cookies="JSESSIONID" />
+		<remember-me key="uniqueAndSecret" />
+	</http>
+	<authentication-manager>
+		<authentication-provider user-service-ref="jdbcUserService">
+			<password-encoder hash="bcrypt" />
+		</authentication-provider>
+	</authentication-manager>
+
+	<!-- <authentication-manager> <authentication-provider> <jdbc-user-service 
+		data-source-ref="dataSource" users-by-username-query="select username, password,active 
+		from users where username=?" authorities-by-username-query="SELECT R.id, 
+		R.name, P.name FROM roles R JOIN role_members RM ON R.id = RM.roles_id JOIN 
+		users U on U.id = RM.members_id JOIN role_permissions RP ON RP.roles_id = 
+		R.id JOIN permissions P ON P.id= RP.permissions_id WHERE U.username=?" /> 
+		<password-encoder hash="bcrypt" /> </authentication-provider> </authentication-manager> -->
+
+
+
+	<!-- <authentication-manager> <authentication-provider> <jdbc-user-service 
+		data-source-ref="dataSource" users-by-username-query="select username, password, 
+		active from User where username=?" authorities-by-username-query="select 
+		u.username, r.roleName from User u, Roles r where u.id = r.userId and u.username 
+		=? " /> <password-encoder hash="bcrypt" /> </authentication-provider> </authentication-manager> -->
+
+</beans:beans>

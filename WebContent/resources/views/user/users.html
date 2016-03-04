@@ -1,0 +1,63 @@
+<!-- BEGIN PAGE HEADER-->
+<h3 class="page-title">Marketers</h3>
+
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN EXAMPLE TABLE PORTLET-->
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-globe"></i>All Marketers 
+				</div>
+				<div class="tools">
+					<!--<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>-->
+					<a href="javascript:;" class="reload"> </a>
+					<!--<a href="javascript:;" class="remove">
+								</a>-->
+				</div>
+			</div>
+			<div class="portlet-body">
+
+				<table class="table table-striped table-bordered table-hover"
+					id="tblUsers">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Contact</th>
+							<th>Gender</th>
+							<th>Address</th>
+							<th>Roles</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="odd gradeX" ng-repeat="user in users">
+							<td>{{user.firstName+' '+user.middleName+' '+user.lastName}}</td>
+							<td>{{user.userName}}</td>
+							<td>{{user.email}}</td>
+							<td>{{user.contact}}</td>
+							<td>{{user.gender == 'M' ? 'Male' : 'Female'}}</td>
+							<td>{{user.city + ', ' + user.state}}</td>
+							<td><span ng-repeat="role in user.roles">{{role.name}}</span></td>
+							<td><a ng-if="false" href="javascript:;" ng-click="viewUser(he)"
+								class="btn btn-info btn-xs">Details</a> <a ng-if-permission="Edit User"
+								href="#/users/{{ user.userId }}" class="btn btn-info btn-xs">Edit</a>
+								<a href="javascript:;" class="btn btn-danger btn-xs" ng-if-permission="Delete User"
+								ng-click="delete(user.userId)">Delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- END EXAMPLE TABLE PORTLET-->
+	</div>
+</div>
+
+<!-- END PAGE CONTENT-->

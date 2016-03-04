@@ -1,0 +1,15 @@
+<div controller="CategoryCtrl">
+
+	<table>
+		<tr style="border: 1px solid black;" ng-repeat="category in categories">
+			<td class="category_name">{{category.name}}</td>
+			<td class="category_description">{{category.description}}</td>
+			<td>
+				<button type="button" class="btn-primary-dashboard"
+					onclick="removeCategory(${item.id})">
+				</button>
+			</td>
+		</tr>
+
+	</table>
+</div>
